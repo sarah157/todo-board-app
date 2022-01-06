@@ -1,7 +1,7 @@
 ## Todo Board App
 
 A basic Trello-inspired Todo App. Created mainly to practice React (Context API, React Router, useReducer).
-![](screenshot.jpg)
+![]([screenshot.png](https://github.com/sarah157/todo-board-app/blob/main/screenshot.png))
 
 ### Features
 - Add, delete, and update boards, lists, and todo cards
