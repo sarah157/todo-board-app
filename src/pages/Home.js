@@ -19,7 +19,7 @@ export default function Home() {
     const _fetchBoards = async () => {
       try {
         setLoading(true);
-        const data = await fetchUserBoards(uid)
+        const data = await fetchUserBoards(uid);
         setLoading(false);
         setBoards(data);
       } catch (err) {
@@ -30,41 +30,63 @@ export default function Home() {
   }, [uid, setAlert]);
 
   const addBoardHandler = async (title) => {
+    setAlert(null)
     try {
       if (!title) return;
       const newBoard = await addBoard(uid, title);
-      setBoards((prev) =>  [...prev, newBoard]);
+      setBoards((prev) => [...prev, newBoard]);
     } catch (err) {
       setAlert({ msg: err.message, isError: true });
     }
   };
-  
+
   return (
     <>
       {loading && <Loading />}
       {!loading && (
         <>
-        <BaseHeader/>
-        <div className="board-list gap-1 flex md:w-3/4 justify-center mx-auto flex-wrap mt-14">
-            {boards.map(b => (
-              <Link to={`/b/${b.id}`} key={b.id}>
-              <div className="bg-gray-100 rounded-md h-20 w-48 hover:bg-gray-200 hover:shadow-md flex items-center justify-center">
-                {b.title}
+          <BaseHeader>
+            <span className="px-1 text-lg font-light border">BOARDS</span>
+          </BaseHeader>
+          <div className="board-list-container mt-10 p-2 mx-auto max-w-4xl">
+            <div className="board-list-header mb-3 border-b border-gray-400">
+              <h3 className="board-list-title text-lg font-semibold">
+                All Boards
+              </h3>
+            </div>
+            <div className="board-list-content grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1">
+              {boards.map((b) => (
+                <div
+                  key={b.id}
+                  className="board-list-item col-auto border bg-white"
+                  style={{
+                    backgroundImage: `url(${b.image})`,
+                    backgroundSize: "cover",
+                  }}
+                >
+                  <Link to={`/b/${b.id}`}>
+                    <div className="h-28 w-full hover:bg-white hover:bg-opacity-50">
+                      <p className="pl-2 text-lg font-semibold bg-white opacity-75">
+                        {b.title}
+                      </p>
+                    </div>
+                  </Link>
+                </div>
+              ))}
+
+              {boards.length === 0 && (
+                <p className="mr-2 pt-2 text-right">Add your first board!✨</p>
+              )}
+              <div className="add-board col-auto">
+                <AddItem
+                  type="board"
+                  btnStyle="p-2 rounded-md border-dashed border border-gray-400 h-28 justify-center"
+                  onAddItem={addBoardHandler}
+                />
               </div>
-            </Link>
-          ))}
-          {boards.length === 0 && (
-            <p className="mr-2 pt-2">Add your first board</p>
-          )}
-          <div className="add-board-container h-32 w-48">
-            <AddItem
-              type="board"
-              btnStyle="p-2 rounded-md mx-auto border"
-              onAddItem={addBoardHandler}
-            />
+            </div>
           </div>
-          </div>
-          </>
+        </>
       )}
     </>
   );

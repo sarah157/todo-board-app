@@ -39,6 +39,7 @@ export const fetchBoard = (id) => async (dispatch) => {
   }
 };
 
+// update board title or image
 export const updateBoard = (id, data) => async (dispatch) => {
   dispatch({ type: SET_ERROR, payload: null });
   try {
@@ -89,7 +90,8 @@ export const reorderCards = (listMap) => async (dispatch) => {
     await ds.updateDocument("lists", id, { cards: listMap[id].cards });
   });
 };
-// update title or reorder cards
+
+// update list title or reorder cards
 export const updateList = (id, data) => async (dispatch) => {
   dispatch({ type: SET_ERROR, payload: null });
   try {
@@ -139,7 +141,7 @@ export const addCard = (data, listId) => async (dispatch) => {
   }
 };
 
-// update title or completion status
+// update card title or completion status
 export const updateCard = (id, data) => async (dispatch) => {
   dispatch({ type: SET_ERROR, payload: null });
   try {

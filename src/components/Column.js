@@ -7,7 +7,7 @@ import { useAuth } from "../context/auth-context";
 
 import Card from "./Card";
 import AddItem from "./AddItem";
-import Title from "./Title";
+import ItemTitle from "./ItemTitle";
 
 const Column = ({ listId, index, list }) => {
   const { uid } = useAuth();
@@ -43,7 +43,7 @@ const Column = ({ listId, index, list }) => {
         >
           <div className="list-content rounded-md  p-2 bg-gray-200  ">
             <div className="list-header flex" {...provided.dragHandleProps}>
-              <Title
+              <ItemTitle
                 textStyles="font-semibold"
                 initValue={list.title}
                 onUpdateTitle={updateListTitleHandler}

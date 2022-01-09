@@ -29,7 +29,6 @@ function App() {
     <BrowserRouter>
       <div className="app">
         <Alert />
-        <main className="content w-full">
           <Routes>
             <Route
               path="/"
@@ -51,7 +50,6 @@ function App() {
               path="*"
               element={<Error404 />} />
           </Routes>
-        </main>
       </div>
     </BrowserRouter>
   );

@@ -9,7 +9,7 @@ import { useAlert } from "../context/alert-context";
 import { fetchBoard, updateBoard } from "../context/active-board-context/actions";
 
 import Error404 from "./Error404";
-import Title from "../components/Title";
+import ItemTitle from "../components/ItemTitle";
 import BoardDnD from "../components/BoardDnD";
 import Loading from "../components/Loading";
 import BaseHeader from "../components/BaseHeader";
@@ -62,26 +62,23 @@ const BoardPage = () => {
       {loading && <Loading />}
       {!loading && !state.id && <Error404 />}
       {!loading && state.id && (
-        <div className="board-container">
-          <div
-            className="board-content overflow-auto h-screen"
-            style={{
-              backgroundImage: `url(${state.image})`,
-              backgroundSize: "cover",
-            }}
-          >
-            <BaseHeader backArrowLogo={true}>
-              <div className="board-header w-full flex items-end">
-                <div className="board-header-title w-1/3 flex justify-center items-center">
-                  <Title
+        <div className="board-container overflow-auto h-screen"
+        style={{
+          backgroundImage: `url(${state.image})`,
+          backgroundSize: "cover",
+        }}>
+              <BaseHeader className="board-header">
+              <div className="board-header-content w-full flex flex-wrap items-end gap-2">
+                <div className="board-header-title w-1/3 flex sm:justify-center sm:items-center">
+                  <ItemTitle
                     textStyles="font-semibold text-center header-item"
                     initValue={state.title}
                     onUpdateTitle={updateBoardHandler}
                   />
                 </div>
-                <div className="board-header-actions flex items-center mr-4">
+                <div className="board-header-actions flex flex-wrap sm:items-center gap-2">
                   <div
-                    className="delete-board-btn header-item text-sm mx-2"
+                    className="delete-board-btn header-item text-sm"
                     onClick={deleteBoardHandler}
                   >
                     <button className="m-0.5 border-none outline-none">Delete board</button>
@@ -120,14 +117,14 @@ const BoardPage = () => {
                   )}
                 </div>
               </div>
-            </BaseHeader>
+          </BaseHeader>
             <div
               onClick={cancelEditImageHandler}
-              className="board-canvas pt-2 mx-9"
+              className="board-content mt-2 mx-9"
             >
               <BoardDnD boardId={boardId} />
             </div>
-          </div>
+        
         </div>
       )}
     </>

@@ -7,7 +7,7 @@ import {
 } from "../context/active-board-context/actions";
 import { useActiveBoard } from "../context/active-board-context";
 
-import Title from "./Title";
+import ItemTitle from "./ItemTitle";
 
 const Card = ({ cardId, card, index, listId }) => {
   const { dispatch } = useActiveBoard();
@@ -41,7 +41,7 @@ const Card = ({ cardId, card, index, listId }) => {
               />
             </span>
 
-            <Title
+            <ItemTitle
               textStyles={card.done ? "text-gray-400 line-through" : ""}
               initValue={card.title}
               onUpdateTitle={updateCardHandler}

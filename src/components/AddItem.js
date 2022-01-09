@@ -19,13 +19,13 @@ const AddItem = ({ type, onAddItem, btnStyle, loading }) => {
           onClick={() => setShowForm(true)}
           className={` text-gray-500 hover:text-black w-full flex items-center ${btnStyle}`}
         >
-          {loading && <span className="mx-auto">Loading...</span>}
-          {!loading && <>
+          {loading && <div className="mx-auto py-5">Loading...</div>}
+          {!loading && <div className="flex">
            <span>
               <HiPlus className="mr-1 text-xl" />
             </span>
             <span>{`Add ${type}`}</span>
-            </> 
+            </div> 
         }
         </div>
       )}

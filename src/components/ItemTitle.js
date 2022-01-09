@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { HiTrash } from "react-icons/hi";
 
-const Title = ({ textStyles, initValue, onUpdateTitle, onDeleteItem}) => {
+const ItemTitle = ({ textStyles, initValue, onUpdateTitle, onDeleteItem}) => {
   const [isEditting, setIsEditting] = useState(false);
   const [title, setTitle] = useState(initValue);
   const [prevTitle, setPrevTitle] = useState(initValue);
@@ -46,4 +46,4 @@ const Title = ({ textStyles, initValue, onUpdateTitle, onDeleteItem}) => {
   );
 };
 
-export default Title;
+export default ItemTitle;

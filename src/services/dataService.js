@@ -79,13 +79,17 @@ export const fetchBoard = async (id) => {
 
 export const fetchUserBoards = async (uid) => {
   const user = await getDoc(doc(db, "users", uid));
-  if (!user.exists()) await addUser(uid);
+  if (!user.exists()) {
+    await addUser(uid);
+    return [];
+  }
+  if (!user.data().boards) return []
 
-  const boards = [];
-  user.data().boards.forEach((id) => boards.push(fetchDocument("boards", id)));
+  const boards = []
+    user.data().boards.forEach(async(id) => boards.push(fetchDocument("boards", id)));
+    const resolvedBoards = await Promise.all(boards);
 
-  const resolvedBoards = await Promise.all(boards);
-  return resolvedBoards;
+  return resolvedBoards 
 };
 
 export const addBoard = async (uid, title) => {

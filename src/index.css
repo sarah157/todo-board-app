@@ -6,7 +6,7 @@
   @apply text-sm px-2 py-1 text-white rounded-sm bg-opacity-80;
 }
 .header-item {
-  @apply cursor-pointer flex items-center justify-center bg-white p-1 rounded-sm bg-opacity-50 hover:bg-opacity-60;
+  @apply cursor-pointer flex items-center justify-center bg-gray-200 p-1 rounded-sm bg-opacity-50 hover:bg-opacity-60;
 }
 
 * {
