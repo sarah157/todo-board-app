@@ -74,9 +74,6 @@ export default function Home() {
                 </div>
               ))}
 
-              {boards.length === 0 && (
-                <p className="mr-2 pt-2 text-right">Add your first board!✨</p>
-              )}
               <div className="add-board col-auto">
                 <AddItem
                   type="board"
@@ -84,6 +81,9 @@ export default function Home() {
                   onAddItem={addBoardHandler}
                 />
               </div>
+          {boards.length === 0 && (
+            <p className="mr-2 pt-2 text-right">Add your first board!✨</p>
+          )}
             </div>
           </div>
         </>
