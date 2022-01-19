@@ -10,6 +10,7 @@ A Trello-inspired Todo App. Created mainly to practice React (Context API, React
 - Mark todo cards as complete or incomplete
 - Drag and drop lists and cards within a board ([react-beautiful-dnd](https://github.com/atlassian/react-beautiful-dnd))
 - Login or sign up using email/password or Google (Firebase authentication)
+- Loading spinner and toast notifications
 
 ### Built With
 - React
@@ -20,4 +21,3 @@ A Trello-inspired Todo App. Created mainly to practice React (Context API, React
 ![screenshot1.png](https://github.com/sarah157/todo-board-app/blob/main/screenshots/screenshot1.png)
 ![screenshot2.png](https://github.com/sarah157/todo-board-app/blob/main/screenshots/screenshot2.png)
 ![screenshot3.png](https://github.com/sarah157/todo-board-app/blob/main/screenshots/screenshot3.png)
-<!-- ![demo.gif](https://github.com/sarah157/todo-board-app/blob/main/screenshots/demo.gif) -->
