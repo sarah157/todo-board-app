@@ -41,14 +41,14 @@ export default function Home() {
   };
 
   return (
-    <>
+    <div className="bg-blue-50 h-full">
       {loading && <Loading />}
       {!loading && (
         <>
           <BaseHeader>
-            <span className="px-1 text-lg font-light border">BOARDS</span>
+            <span className="px-1 text-lg font-light border border-black">BOARDS</span>
           </BaseHeader>
-          <div className="board-list-container mt-10 p-2 mx-auto max-w-4xl">
+          <div className="board-list-container bg-white mt-10 p-5 mx-auto max-w-4xl">
             <div className="board-list-header mb-3 border-b border-gray-400">
               <h3 className="board-list-title text-lg font-semibold">
                 All Boards
@@ -88,6 +88,6 @@ export default function Home() {
           </div>
         </>
       )}
-    </>
+    </div>
   );
 }

@@ -3,31 +3,21 @@ import {
   Routes,
   Route,
   Navigate,
-  useLocation,
 } from "react-router-dom";
 
 import BoardPage from "./pages/Board";
 import Home from "./pages/Home";
 import Auth from "./pages/Auth";
 import { useAuth } from "./context/auth-context";
-import Loading from "./components/Loading";
+import RequireAuth from "./components/RequireAuth";
 import Alert from "./components/Alert";
 import Error404 from "./pages/Error404";
 
-function RequireAuth({ children }) {
-  const location = useLocation();
-  const { uid, loading } = useAuth();
-  if (loading) return <Loading />;
-  if (uid) return children;
-  return <Navigate to="/auth" replace state={{ path: location.pathname }} />;
-}
-
 function App() {
   const { uid } = useAuth();
-
   return (
     <BrowserRouter>
-      <div className="app">
+      <div className="app h-screen">
         <Alert />
           <Routes>
             <Route

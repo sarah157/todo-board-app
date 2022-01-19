@@ -53,12 +53,14 @@ const Auth = () => {
     return <Navigate to={state?.path || "/home"} />;
   }
   return (
-    <div className="mx-auto max-w-sm  mt-10 ">
-      <div className="p-2 border items-stretch">
-        <div className="flex flex-col gap-">
-          <div className="text-center mb-2">Enter your email and password</div>
+    <div className="bg-gray-100 h-full pt-7">
+      <div className="p-2 border mx-auto bg-white max-w-sm items-center">
+        <div className="text-center font-thin mb-4">
+          <p className="mt-3 mb-7 font-semibold">WELCOME!</p>
+          <p>Please enter your email and password</p>
+          </div>
 
-          <form className="flex flex-col gap-y-2" onSubmit={submitFormHandler}>
+          <form className="flex flex-col gap-y-3" onSubmit={submitFormHandler}>
             <input
               className="p-0.5 bg-gray-100"
               placeholder="email"
@@ -83,7 +85,7 @@ const Auth = () => {
               <p className="text-center text-sm mt-1 text-red-500">{error}</p>
             )}
           </div>
-        </div>
+ 
         <div className="my-6 text-center w-full flex border-b">
           <span className=" -mb-2 mx-auto bg-white px-1 text-sm font-light text-gray-400">
             or

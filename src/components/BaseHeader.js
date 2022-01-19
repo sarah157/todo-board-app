@@ -1,4 +1,4 @@
-import { HiCube } from "react-icons/hi";
+import { HiViewGrid } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/auth-context";
 import { logout } from "../services/authService";
@@ -12,17 +12,17 @@ const BaseHeader = ({ children, className }) => {
   };
 
   return (
-    <div className={`${className ? className : ""} header my-2 mx-4 flex justify-between g-2`}>
-      <div className="header-section w-5/6 flex gap-2 sm:items-center items-start">
+    <div className={`${className ? className : ""} header p-4 flex justify-between g-2`}>
+      <div className="header-section w-5/6 flex gap-2 items-center">
         <div onClick={() => navigate("/")} className="header-logo header-item" >
-          <HiCube className="mt-0.5 mb-1 mx-1"/>
+          <HiViewGrid className="mt-0.5 mb-1 mx-1"/>
         </div>
         {children}
       </div>
       <div className="header-section ">
         {uid && (
-          <div className="header-logout">
-          <button className="cursor-pointer underline" onClick={logoutHandler}>
+          <div className="header-logout header-item">
+          <button className="cursor-pointer" onClick={logoutHandler}>
             Logout
           </button>
           </div>
