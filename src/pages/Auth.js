@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useAuth } from "../context/auth-context";
+import { useAlert } from "../context/alert-context";
 import { Navigate, useLocation } from "react-router-dom";
 
 import * as auth from "../services/authService";
@@ -8,6 +9,7 @@ const Auth = () => {
   const { state } = useLocation();
   const [loading, setLoading] = useState(false);
   const { uid } = useAuth();
+  const { setAlert } = useAlert();
   const [mode, setMode] = useState(state?.mode || "Sign In");
   const [error, setError] = useState(null);
   const emailRef = useRef(null);
@@ -15,6 +17,7 @@ const Auth = () => {
 
   useEffect(() => {
     setError(null);
+    setAlert(null);
   }, []);
 
   const toggleModeHandler = (mode) => {
@@ -45,7 +48,9 @@ const Auth = () => {
     setError(null);
     auth
       .googleAuth()
-      .catch((err) => setError(err.message))
+      .catch((err) => {
+        if (err.message !== "Firebase: Error (auth/popup-closed-by-user).") setError(err.message)
+      })
       .finally(() => setLoading(false));
   };
 
@@ -61,6 +66,7 @@ const Auth = () => {
           </div>
 
           <form className="flex flex-col gap-y-3" onSubmit={submitFormHandler}>
+            {console.log("hello")}
             <input
               className="p-0.5 bg-gray-100"
               placeholder="email"
