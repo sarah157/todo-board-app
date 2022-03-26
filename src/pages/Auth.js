@@ -18,7 +18,7 @@ const Auth = () => {
   useEffect(() => {
     setError(null);
     setAlert(null);
-  }, []);
+  }, [setAlert]);
 
   const toggleModeHandler = (mode) => {
     setMode(mode);
