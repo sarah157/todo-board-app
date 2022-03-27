@@ -2,15 +2,18 @@ import React, { useState, useEffect, useRef } from "react";
 import { useAuth } from "../context/auth-context";
 import { useAlert } from "../context/alert-context";
 import { Navigate, useLocation } from "react-router-dom";
+import { prettyError } from "../helpers";
 
 import * as auth from "../services/authService";
 
 const Auth = () => {
+  const SIGN_IN = "Sign In";
+  const SIGN_UP = "Sign Up";
   const { state } = useLocation();
   const [loading, setLoading] = useState(false);
   const { uid } = useAuth();
   const { setAlert } = useAlert();
-  const [mode, setMode] = useState(state?.mode || "Sign In");
+  const [mode, setMode] = useState(SIGN_UP);
   const [error, setError] = useState(null);
   const emailRef = useRef(null);
   const passRef = useRef(null);
@@ -30,15 +33,15 @@ const Auth = () => {
     setError(null);
     setLoading(true);
 
-    if (mode === "Sign In") {
+    if (mode === SIGN_IN) {
       auth
         .signIn(emailRef.current.value, passRef.current.value)
-        .catch((err) => setError(err.message))
+        .catch((err) => setError(prettyError(err.message)))
         .finally(() => setLoading(false));
     } else {
       auth
         .signUp(emailRef.current.value, passRef.current.value)
-        .catch((err) => setError(err.message))
+        .catch((err) => setError(prettyError(err.message)))
         .finally(() => setLoading(false));
     }
   };
@@ -48,9 +51,7 @@ const Auth = () => {
     setError(null);
     auth
       .googleAuth()
-      .catch((err) => {
-        if (err.message !== "Firebase: Error (auth/popup-closed-by-user).") setError(err.message)
-      })
+      .catch((err) =>  setError(prettyError(err.message)))
       .finally(() => setLoading(false));
   };
 
@@ -105,23 +106,23 @@ const Auth = () => {
         </button>
       </div>
       <div className="flex font-thin text-sm mt-2 justify-center">
-        {mode === "Sign In" && (
+        {mode === SIGN_IN && (
           <p>
             Don't have an account?
             <span
               className="ml-1 underline cursor-pointer"
-              onClick={() => toggleModeHandler("Sign Up")}
+              onClick={() => toggleModeHandler(SIGN_UP)}
             >
               Sign Up
             </span>
           </p>
         )}
-        {mode === "Sign Up" && (
+        {mode === SIGN_UP && (
           <p>
             Already have an account?
             <span
               className="ml-1 underline cursor-pointer"
-              onClick={() => toggleModeHandler("Sign In")}
+              onClick={() => toggleModeHandler(SIGN_IN)}
             >
               Sign In
             </span>
