@@ -1,28 +1,45 @@
 import { useState } from "react";
-import CheckCircle from "./CheckCircle";
 
-const CardDetails = ({ card, onToggleDone, onUpdate }) => {
+import { useActiveBoard } from "../context/active-board-context";
+import { updateCard, deleteCard } from "../context/active-board-context/actions";
+import CheckCircle from "./CheckCircle";
+import ItemTitle from "./ItemTitle";
+
+const CardDetails = ({ card, cardId, listId, onToggleDone }) => {
     const [details, setDetails] = useState(card.details);
+    const { dispatch } = useActiveBoard();
 
     const toggleDoneHandler = (isDone) => {
         onToggleDone(isDone);
     }
     const updateDueDateHandler = (e) => {
-        onUpdate({ dueDate: e.target.value })
+        updateCard(cardId, { dueDate: e.target.value })(dispatch)
     };
 
     const updateDetailsHandler = (e) => {
-        onUpdate({ details: e.target.value })
+        updateCard(cardId, { details: e.target.value })(dispatch)
     }
+    const updateTitleHandler = (title) => {
+        updateCard(cardId, title)(dispatch)
+    }
+
+    const deleteCardHandler = async () => {
+        deleteCard(cardId, listId)(dispatch);
+    };
 
     return (
         <div className="mt-3 p-3">
-            <div className="flex justify-start text-3xl mb-3 gap-x-3">
+            <div className="flex justify-start text-2xl mb-3 gap-x-3">
                 <CheckCircle
                     isDone={card.done}
                     onToggle={toggleDoneHandler}
                 />
-                <h3 className="text-center font-bold">{card.title}</h3>
+                <ItemTitle
+                    textStyles={card.done ? "text-gray-400 line-through" : ""}
+                    initValue={card.title}
+                    onUpdateTitle={updateTitleHandler}
+                    onDeleteItem={deleteCardHandler}
+                />
             </div>
             <div className="mt-10 space-y-6">
                 <div>

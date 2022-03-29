@@ -21,14 +21,6 @@ const CardPreview = ({ cardId, card, index, listId }) => {
     updateCard(cardId, { done: isDone })(dispatch);
   }
 
-  // update title, due date, details
-  const updateCardHandler = async (data) => {
-    updateCard(cardId, data)(dispatch);
-  };
-
-  const deleteCardHandler = async () => {
-    deleteCard(cardId, listId)(dispatch);
-  };
   const closeModalHandler = () => {
     setOpenModal(false);
   }
@@ -38,28 +30,28 @@ const CardPreview = ({ cardId, card, index, listId }) => {
       {openModal && (
         <Modal
           component={CardDetails}
-          props={{ card, onUpdate: updateCardHandler, onToggleDone: toggleDoneHandler }}
+          props={{ card, cardId, listId, onToggleDone: toggleDoneHandler }}
           onClose={closeModalHandler}
         />
       )}
       <Draggable key={cardId} draggableId={cardId} index={index}>
         {(dragProvided) => (
           <div
-          className="card-container py-1"
-          ref={dragProvided.innerRef}
-          {...dragProvided.draggableProps}
-          {...dragProvided.dragHandleProps}
+            className="card-container py-1"
+            ref={dragProvided.innerRef}
+            {...dragProvided.draggableProps}
+            {...dragProvided.dragHandleProps}
           >
             <div className="card-content p-1 flex rounded-md shadow-sm bg-gray-50 items-center hover:bg-gray-100 space-x-1">
               <CheckCircle isDone={card.done} onToggle={toggleDoneHandler} />
-              <ItemTitle
-                textStyles={card.done ? "text-gray-400 line-through" : ""}
-                initValue={card.title}
-                onUpdateTitle={updateCardHandler}
-                onDeleteItem={deleteCardHandler}
-              />
-
-              <div className="group cursor-pointer" onClick={() => setOpenModal(true)}>
+              <h3
+                onClick={() => setOpenModal(true)}
+                className={`w-5/6 ${card.done ? "text-gray-400 line-through" : ""}`}>
+                {card.title}
+              </h3>
+              <div
+                className="group cursor-pointer"
+                onClick={() => setOpenModal(true)}>
                 <HiArrowsExpand
                   className="text-gray-400 group-hover:text-black mx-auto" />
               </div>

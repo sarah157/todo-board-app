@@ -45,7 +45,7 @@ const ItemTitle = ({ textStyles, initValue, onUpdateTitle, onDeleteItem }) => {
         </div>
         {onDeleteItem &&
           <div className="group cursor-pointer w-10"
-            onClick={deleteItemHandler}><HiTrash className="text-gray-400 group-hover:text-black mx-auto" /></div>
+            onClick={deleteItemHandler}><HiTrash className="mt-1 text-gray-400 group-hover:text-black mx-auto" /></div>
             }
     </>
   );
