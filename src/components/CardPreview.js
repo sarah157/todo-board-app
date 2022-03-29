@@ -18,12 +18,12 @@ const CardPreview = ({ cardId, card, index, listId }) => {
   const { dispatch } = useActiveBoard();
 
   const toggleDoneHandler = (isDone) => {
-    console.log(isDone)
     updateCard(cardId, { done: isDone })(dispatch);
   }
 
-  const updatTitleHandler = async (title) => {
-    updateCard(cardId, title)(dispatch);
+  // update title, due date, details
+  const updateCardHandler = async (data) => {
+    updateCard(cardId, data)(dispatch);
   };
 
   const deleteCardHandler = async () => {
@@ -38,24 +38,24 @@ const CardPreview = ({ cardId, card, index, listId }) => {
       {openModal && (
         <Modal
           component={CardDetails}
-          props={{ card, onToggleDone: toggleDoneHandler }}
+          props={{ card, onUpdate: updateCardHandler, onToggleDone: toggleDoneHandler }}
           onClose={closeModalHandler}
         />
       )}
       <Draggable key={cardId} draggableId={cardId} index={index}>
         {(dragProvided) => (
           <div
-            className="card-container py-1"
-            ref={dragProvided.innerRef}
-            {...dragProvided.draggableProps}
-            {...dragProvided.dragHandleProps}
+          className="card-container py-1"
+          ref={dragProvided.innerRef}
+          {...dragProvided.draggableProps}
+          {...dragProvided.dragHandleProps}
           >
             <div className="card-content p-1 flex rounded-md shadow-sm bg-gray-50 items-center hover:bg-gray-100 space-x-1">
               <CheckCircle isDone={card.done} onToggle={toggleDoneHandler} />
               <ItemTitle
                 textStyles={card.done ? "text-gray-400 line-through" : ""}
                 initValue={card.title}
-                onUpdateTitle={updatTitleHandler}
+                onUpdateTitle={updateCardHandler}
                 onDeleteItem={deleteCardHandler}
               />
 

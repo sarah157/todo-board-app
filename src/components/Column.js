@@ -29,6 +29,8 @@ const Column = ({ listId, index, list }) => {
       boardId: state.id,
       owner: uid,
       done: false,
+      details: "",
+      dueDate: ""
     };
     addCard(data, listId)(dispatch).then(() => setLoading(false));
   };
