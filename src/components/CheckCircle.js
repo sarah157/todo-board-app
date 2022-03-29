@@ -1,9 +1,6 @@
-import { useState } from "react";
 import { HiCheckCircle } from "react-icons/hi";
 
 const CheckCircle = ({onToggle, isDone}) => {
-    const [done, setDone] = useState(isDone)
-
     const toggleDoneHandler = () => {
         onToggle(!isDone)
     }

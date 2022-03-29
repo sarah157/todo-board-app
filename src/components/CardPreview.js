@@ -1,14 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Draggable } from "react-beautiful-dnd";
 import { HiArrowsExpand } from 'react-icons/hi';
 
 import {
   updateCard,
-  deleteCard,
 } from "../context/active-board-context/actions";
 import { useActiveBoard } from "../context/active-board-context";
 
-import ItemTitle from "./ItemTitle";
 import CardDetails from "./CardDetails";
 import CheckCircle from './CheckCircle';
 import Modal from "./Modal";

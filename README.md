@@ -1,6 +1,6 @@
 ## Todo Board App
 
-A Trello-inspired Todo App. Created mainly to practice React (Context API, React Router, useReducer).
+A Trello-inspired Todo App. Created mainly to practice React (Context API, React Router, useReducer). [**Live Demo**](https://todoboards.netlify.app/)
 
 https://user-images.githubusercontent.com/47197893/150067693-31d554fe-cce8-42aa-8efe-146db84c2cf9.mp4
 
