@@ -9,9 +9,9 @@ import { AlertContextProvider } from "./context/alert-context";
 ReactDOM.render(
   <AlertContextProvider>
     <AuthContextProvider>
-    <ActiveBoardContextProvider>
-      <App />
-    </ActiveBoardContextProvider>
+      <ActiveBoardContextProvider>
+          <App />
+      </ActiveBoardContextProvider>
     </AuthContextProvider>
   </AlertContextProvider>,
   document.getElementById("root")

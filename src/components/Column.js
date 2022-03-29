@@ -5,7 +5,7 @@ import { addCard, deleteList, updateList } from "../context/active-board-context
 import { useActiveBoard } from "../context/active-board-context";
 import { useAuth } from "../context/auth-context";
 
-import Card from "./Card";
+import CardPreview from "./CardPreview";
 import AddItem from "./AddItem";
 import ItemTitle from "./ItemTitle";
 
@@ -14,8 +14,8 @@ const Column = ({ listId, index, list }) => {
   const { state, dispatch } = useActiveBoard();
   const [loading, setLoading] = useState(false);
 
-  const updateListTitleHandler = async (data) => {
-    updateList(listId, data)(dispatch);
+  const updateListTitleHandler = async (title) => {
+    updateList(listId, title)(dispatch);
   };
 
   const deleteListHandler = async () => {
@@ -60,7 +60,7 @@ const Column = ({ listId, index, list }) => {
                 >
                   {list.cards &&
                     list.cards.map((cardId, idx) => (
-                      <Card
+                      <CardPreview
                         key={cardId}
                         cardId={cardId}
                         card={state.cardMap[cardId]}
