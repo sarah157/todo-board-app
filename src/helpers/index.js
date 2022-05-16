@@ -59,6 +59,8 @@ export const prettyError = (msg) => {
     case "Firebase: Error (auth/user-not-found).":
     case "Firebase: Error (auth/wrong-password).":
       return "Incorrect email or password"
+    case "Firebase: Error (auth/invalid-email).":
+      return "Please enter an email and password"
     case "Firebase: Error (auth/popup-closed-by-user).":
       return ""
     default:

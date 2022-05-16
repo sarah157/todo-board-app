@@ -22,3 +22,4 @@ https://user-images.githubusercontent.com/47197893/150067693-31d554fe-cce8-42aa-
 ![screenshot1.png](https://github.com/sarah157/todo-board-app/blob/main/screenshots/screenshot1.png)
 ![screenshot2.png](https://github.com/sarah157/todo-board-app/blob/main/screenshots/screenshot2.png)
 ![screenshot3.png](https://github.com/sarah157/todo-board-app/blob/main/screenshots/screenshot3.png)
+![screenshot4.png](https://github.com/sarah157/todo-board-app/blob/main/screenshots/screenshot4.png)

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { HiViewGrid } from "react-icons/hi";
 import { useAuth } from "../context/auth-context";
 import { useAlert } from "../context/alert-context";
 import { Navigate, useLocation } from "react-router-dom";
@@ -62,22 +63,23 @@ const Auth = () => {
     <div className="bg-gray-100 h-full pt-7">
       <div className="p-2 border mx-auto bg-white max-w-sm items-center">
         <div className="text-center font-thin mb-4">
-          <p className="mt-3 mb-7 font-semibold">WELCOME!</p>
+          <h4 className="mt-3 mb-7 font-thin uppercase flex justify-center items-center">   
+           <HiViewGrid className="mt-0.5 mb-1 mx-1"/>
+           <span >Boards</span></h4>
           <p>Please enter your email and password</p>
           </div>
 
           <form className="flex flex-col gap-y-3" onSubmit={submitFormHandler}>
-            {console.log("hello")}
             <input
-              className="p-0.5 bg-gray-100"
-              placeholder="email"
+              className="py-1 px-2 bg-gray-100"
+              placeholder="Email"
               ref={emailRef}
               type="email"
               name="email"
             />
             <input
-              className="p-0.5 bg-gray-100"
-              placeholder="password"
+              className="py-1 px-2 bg-gray-100"
+              placeholder="Password"
               ref={passRef}
               type="password"
               name="password"
