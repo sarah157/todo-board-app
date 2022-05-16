@@ -30,7 +30,7 @@ export default function Home() {
   }, [uid, setAlert]);
 
   const addBoardHandler = async (title) => {
-    setAlert(null)
+    setAlert(null);
     try {
       if (!title) return;
       const newBoard = await addBoard(uid, title);
@@ -46,7 +46,9 @@ export default function Home() {
       {!loading && (
         <>
           <BaseHeader>
-            <span className="px-1 text-lg font-light border border-black">BOARDS</span>
+            <span className="px-1 text-lg font-light border border-black">
+              BOARDS
+            </span>
           </BaseHeader>
           <div className="board-list-container bg-white mt-10 p-5 mx-auto max-w-4xl">
             <div className="board-list-header mb-3 border-b border-gray-400">
@@ -81,9 +83,9 @@ export default function Home() {
                   onAddItem={addBoardHandler}
                 />
               </div>
-          {boards.length === 0 && (
-            <p className="mr-2 pt-2 text-right">Add your first board!✨</p>
-          )}
+              {boards.length === 0 && (
+                <p className="mr-2 pt-2 text-right">Add your first board!✨</p>
+              )}
             </div>
           </div>
         </>

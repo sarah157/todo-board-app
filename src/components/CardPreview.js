@@ -1,14 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { Draggable } from "react-beautiful-dnd";
-import { HiArrowsExpand } from 'react-icons/hi';
+import { HiArrowsExpand } from "react-icons/hi";
 
-import {
-  updateCard,
-} from "../context/active-board-context/actions";
+import { updateCard } from "../context/active-board-context/actions";
 import { useActiveBoard } from "../context/active-board-context";
 
 import CardDetails from "./CardDetails";
-import CheckCircle from './CheckCircle';
+import CheckCircle from "./CheckCircle";
 import Modal from "./Modal";
 
 const CardPreview = ({ cardId, card, index, listId }) => {
@@ -17,11 +15,11 @@ const CardPreview = ({ cardId, card, index, listId }) => {
 
   const toggleDoneHandler = (isDone) => {
     updateCard(cardId, { done: isDone })(dispatch);
-  }
+  };
 
   const closeModalHandler = () => {
     setOpenModal(false);
-  }
+  };
 
   return (
     <>
@@ -44,14 +42,17 @@ const CardPreview = ({ cardId, card, index, listId }) => {
               <CheckCircle isDone={card.done} onToggle={toggleDoneHandler} />
               <h3
                 onClick={() => setOpenModal(true)}
-                className={`w-5/6 ${card.done ? "text-gray-400 line-through" : ""}`}>
+                className={`w-5/6 ${
+                  card.done ? "text-gray-400 line-through" : ""
+                }`}
+              >
                 {card.title}
               </h3>
               <div
                 className="group cursor-pointer"
-                onClick={() => setOpenModal(true)}>
-                <HiArrowsExpand
-                  className="text-gray-400 group-hover:text-black mx-auto" />
+                onClick={() => setOpenModal(true)}
+              >
+                <HiArrowsExpand className="text-gray-400 group-hover:text-black mx-auto" />
               </div>
             </div>
           </div>

@@ -10,19 +10,19 @@ const ItemTitle = ({ textStyles, initValue, onUpdateTitle, onDeleteItem }) => {
     setIsEditting(false);
 
     if (prevTitle !== title) {
-      onUpdateTitle({title});
+      onUpdateTitle({ title });
       setPrevTitle(title);
     }
   };
 
   const deleteItemHandler = () => {
-    onDeleteItem()
-  }
+    onDeleteItem();
+  };
 
   return (
     <>
-        <div className="flex flex-1 justify-between items-center">
-      {!isEditting && (
+      <div className="flex flex-1 justify-between items-center">
+        {!isEditting && (
           <h2
             className={`w-full ${textStyles}`}
             onClick={() => setIsEditting(true)}
@@ -30,23 +30,24 @@ const ItemTitle = ({ textStyles, initValue, onUpdateTitle, onDeleteItem }) => {
           >
             {title}
           </h2>
-      )} 
-      {isEditting && (
-        <input
-        className={`bg-transparent w-full ${textStyles}`}
-        onBlur={inputTitleHandler}
-        onPause={inputTitleHandler}
-        autoFocus
-        onKeyDown={e => e.key === 'Enter' ? inputTitleHandler() : null}
-        onChange={(e) => setTitle(e.target.value)}
-        value={title}
-        />
         )}
+        {isEditting && (
+          <input
+            className={`bg-transparent w-full ${textStyles}`}
+            onBlur={inputTitleHandler}
+            onPause={inputTitleHandler}
+            autoFocus
+            onKeyDown={(e) => (e.key === "Enter" ? inputTitleHandler() : null)}
+            onChange={(e) => setTitle(e.target.value)}
+            value={title}
+          />
+        )}
+      </div>
+      {onDeleteItem && (
+        <div className="group cursor-pointer w-10" onClick={deleteItemHandler}>
+          <HiTrash className="mt-1 text-gray-400 group-hover:text-black mx-auto" />
         </div>
-        {onDeleteItem &&
-          <div className="group cursor-pointer w-10"
-            onClick={deleteItemHandler}><HiTrash className="mt-1 text-gray-400 group-hover:text-black mx-auto" /></div>
-            }
+      )}
     </>
   );
 };

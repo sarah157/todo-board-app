@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { Draggable, Droppable } from "react-beautiful-dnd";
 
-import { addCard, deleteList, updateList } from "../context/active-board-context/actions";
+import {
+  addCard,
+  deleteList,
+  updateList,
+} from "../context/active-board-context/actions";
 import { useActiveBoard } from "../context/active-board-context";
 import { useAuth } from "../context/auth-context";
 
@@ -30,7 +34,7 @@ const Column = ({ listId, index, list }) => {
       owner: uid,
       done: false,
       details: "",
-      dueDate: ""
+      dueDate: "",
     };
     addCard(data, listId)(dispatch).then(() => setLoading(false));
   };

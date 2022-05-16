@@ -4,13 +4,13 @@ import { HiPlus, HiX } from "react-icons/hi";
 const AddItem = ({ type, onAddItem, btnStyle, loading }) => {
   const [showForm, setShowForm] = useState(false);
   const titleRef = useRef();
-  
+
   const addItemHandler = () => {
     setShowForm(false);
     if (titleRef.current.value) {
-      onAddItem(titleRef.current.value)
+      onAddItem(titleRef.current.value);
     }
-  }
+  };
 
   return (
     <div className={`cursor-pointer`}>
@@ -20,13 +20,14 @@ const AddItem = ({ type, onAddItem, btnStyle, loading }) => {
           className={` text-gray-500 hover:text-black w-full flex items-center ${btnStyle}`}
         >
           {loading && <div className="mx-auto py-5">Loading...</div>}
-          {!loading && <div className="flex">
-           <span>
-              <HiPlus className="mr-1 text-xl" />
-            </span>
-            <span>{`Add ${type}`}</span>
-            </div> 
-        }
+          {!loading && (
+            <div className="flex">
+              <span>
+                <HiPlus className="mr-1 text-xl" />
+              </span>
+              <span>{`Add ${type}`}</span>
+            </div>
+          )}
         </div>
       )}
 
@@ -36,7 +37,7 @@ const AddItem = ({ type, onAddItem, btnStyle, loading }) => {
             className="outline-none w-full py-2 px-1 mb-2 border border-gray-300 rounded-md"
             ref={titleRef}
             onBlur={addItemHandler}
-            onKeyDown={e=>e.key==="Enter" ? addItemHandler() : null}
+            onKeyDown={(e) => (e.key === "Enter" ? addItemHandler() : null)}
             autoFocus
             name={`${type}-title`}
             placeholder={`Enter a title for this ${type}...`}
